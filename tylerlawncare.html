@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tyler's Lawn Care</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #e9f5e7;
+    color: #17351d;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 40px;
+
+    background: rgba(233, 245, 231, 0.92);
+    backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid #c5ddc3;
+
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #17351d;
+}
+
+.logo span {
+    color: #2f9e44;
+}
+
+.nav-links {
+    display: flex;
+    gap: 12px;
+}
+
+.nav-links a {
+    color: #17351d;
+    text-decoration: none;
+
+    padding: 12px 20px;
+
+    border-radius: 25px;
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    background: #2f9e44;
+    color: white;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   HOME PAGE
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 110px 30px 70px;
+
+    background: #e9f5e7;
+}
+
+.hero h1 {
+    font-size: clamp(50px, 9vw, 100px);
+
+    margin-bottom: 20px;
+
+    color: #17351d;
+}
+
+.hero h1 span {
+    color: #2f9e44;
+}
+
+.hero > p {
+    max-width: 700px;
+
+    font-size: 22px;
+
+    line-height: 1.6;
+
+    color: #416348;
+
+    margin-bottom: 45px;
+}
+
+
+/* =========================
+   HOME REVIEWS
+========================= */
+
+.home-review {
+    width: 100%;
+
+    max-width: 800px;
+
+    min-height: 230px;
+
+    position: relative;
+}
+
+.rotating-review {
+    position: absolute;
+
+    width: 100%;
+
+    left: 0;
+    top: 0;
+
+    padding: 35px;
+
+    background: white;
+
+    border-radius: 25px;
+
+    border: 1px solid #c5ddc3;
+
+    box-shadow:
+        0 15px 40px rgba(45, 100, 50, 0.12);
+
+    opacity: 0;
+
+    transform: scale(0.92) translateY(20px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.rotating-review.active {
+    opacity: 1;
+
+    transform: scale(1) translateY(0);
+}
+
+.rotating-review h2 {
+    font-size: 27px;
+
+    margin-bottom: 15px;
+
+    color: #17351d;
+}
+
+.rotating-review .stars {
+    color: #f4b400;
+
+    font-size: 27px;
+
+    margin-bottom: 15px;
+}
+
+.rotating-review p {
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    color: #416348;
+}
+
+.rotating-review strong {
+    display: block;
+
+    margin-top: 15px;
+
+    color: #2f9e44;
+}
+
+
+/* =========================
+   GET A QUOTE BUTTON
+========================= */
+
+.quote-button {
+    display: inline-block;
+
+    margin-top: 35px;
+
+    padding: 16px 32px;
+
+    border-radius: 50px;
+
+    background: #2f9e44;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    font-size: 18px;
+
+    transition: 0.3s;
+}
+
+.quote-button:hover {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 25px rgba(47, 158, 68, 0.35);
+}
+
+
+/* =========================
+   WHY CHOOSE TYLER
+========================= */
+
+.services {
+    padding: 140px 20px;
+
+    text-align: center;
+
+    background: #e9f5e7;
+}
+
+.services h2 {
+    font-size: 50px;
+
+    margin-bottom: 25px;
+
+    color: #17351d;
+}
+
+.services-intro {
+    max-width: 700px;
+
+    margin: 0 auto 60px;
+
+    font-size: 19px;
+
+    line-height: 1.7;
+
+    color: #547058;
+}
+
+.cards {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 300px;
+
+    padding: 40px 25px;
+
+    border-radius: 20px;
+
+    background: #ffffff;
+
+    border: 1px solid #c5ddc3;
+
+    box-shadow:
+        0 10px 30px rgba(45, 100, 50, 0.08);
+
+    transition: 0.4s;
+}
+
+.card:hover {
+    transform: translateY(-15px);
+
+    box-shadow:
+        0 20px 40px rgba(45, 100, 50, 0.15);
+}
+
+.icon {
+    font-size: 50px;
+
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 25px;
+
+    margin-bottom: 15px;
+
+    color: #17351d;
+}
+
+.card p {
+    color: #547058;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   TYLER'S STORY
+========================= */
+
+.story {
+    padding: 120px 20px;
+
+    background: #e9f5e7;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+.story-box {
+    max-width: 850px;
+
+    padding: 55px;
+
+    background: white;
+
+    border-radius: 25px;
+
+    border: 1px solid #c5ddc3;
+
+    box-shadow:
+        0 15px 40px rgba(45, 100, 50, 0.1);
+
+    text-align: left;
+}
+
+.story-box h2 {
+    font-size: 45px;
+
+    margin-bottom: 25px;
+
+    color: #17351d;
+}
+
+.story-box h2 span {
+    color: #2f9e44;
+}
+
+.story-box p {
+    font-size: 19px;
+
+    line-height: 1.9;
+
+    color: #416348;
+
+    margin-bottom: 20px;
+}
+
+.story-highlight {
+    margin-top: 30px;
+
+    padding: 25px;
+
+    border-left: 5px solid #2f9e44;
+
+    background: #e9f5e7;
+
+    border-radius: 10px;
+
+    font-size: 20px;
+
+    line-height: 1.6;
+
+    color: #17351d;
+}
+
+
+/* =========================
+   SCROLL ANIMATIONS
+========================= */
+
+.scroll-animate {
+    opacity: 0;
+
+    transform: translateY(60px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.scroll-animate.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================
+   FIXED SCROLL ARROW
+========================= */
+
+.scroll-arrow {
+    position: fixed;
+
+    left: 25px;
+
+    bottom: 25px;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    background: #2f9e44;
+
+    color: white;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 27px;
+
+    cursor: pointer;
+
+    z-index: 2000;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.15);
+
+    animation: bounce 1.5s infinite;
+
+    transition: 0.3s;
+}
+
+.scroll-arrow:hover {
+    background: #238b35;
+
+    transform: scale(1.1);
+}
+
+@keyframes bounce {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+
+}
+
+
+/* =========================
+   GET A QUOTE PAGE
+========================= */
+
+#contact {
+    display: none;
+
+    min-height: 100vh;
+
+    padding: 120px 20px 50px;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    background: #e9f5e7;
+}
+
+.contact-box {
+    max-width: 650px;
+
+    width: 100%;
+
+    padding: 60px 30px;
+
+    background: white;
+
+    border: 1px solid #c5ddc3;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 50px rgba(45, 100, 50, 0.12);
+}
+
+.contact-box h2 {
+    font-size: 55px;
+
+    margin-bottom: 15px;
+
+    color: #17351d;
+}
+
+.contact-box h2 span {
+    color: #2f9e44;
+}
+
+.contact-box > p {
+    color: #547058;
+
+    font-size: 19px;
+
+    margin-bottom: 40px;
+}
+
+.contact-item {
+    background: #e9f5e7;
+
+    padding: 25px;
+
+    margin: 18px 0;
+
+    border-radius: 15px;
+}
+
+.contact-item h3 {
+    margin-bottom: 10px;
+}
+
+.contact-item p {
+    color: #2f9e44;
+
+    font-size: 20px;
+}
+
+.button {
+    padding: 16px 32px;
+
+    border-radius: 50px;
+
+    background: #2f9e44;
+
+    color: white;
+
+    font-weight: bold;
+
+    font-size: 18px;
+
+    transition: 0.3s;
+
+    border: none;
+
+    cursor: pointer;
+}
+
+.button:hover {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 25px rgba(47, 158, 68, 0.35);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 70px 20px;
+
+    text-align: center;
+
+    background: #e9f5e7;
+}
+
+footer p {
+    color: #547058;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width: 600px) {
+
+    .navbar {
+        padding: 0 15px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .nav-links {
+        gap: 3px;
+    }
+
+    .nav-links a {
+        padding: 9px 10px;
+
+        font-size: 13px;
+    }
+
+    .services h2 {
+        font-size: 38px;
+    }
+
+    .hero > p {
+        font-size: 18px;
+    }
+
+    .rotating-review {
+        padding: 30px 20px;
+    }
+
+    .story-box {
+        padding: 35px 25px;
+    }
+
+    .story-box h2 {
+        font-size: 36px;
+    }
+
+    .scroll-arrow {
+        left: 18px;
+
+        bottom: 18px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        Tyler's <span>Lawn Care</span>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="#home" onclick="showHome()">
+            Home
+        </a>
+
+        <a href="#services" onclick="showHome()">
+            Services
+        </a>
+
+        <a href="#story" onclick="showHome()">
+            Our Story
+        </a>
+
+        <a href="#contact" onclick="showContact()">
+            Get a Quote
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     HOME PAGE
+========================= -->
+
+<div id="home">
+
+    <section class="hero">
+
+        <h1>
+            Tyler's <span>Lawn Care</span>
+        </h1>
+
+        <p>
+            Good lawns. Fair prices.
+            And someone who actually cares
+            about the work.
+        </p>
+
+
+        <!-- REVIEWS -->
+
+        <div class="home-review">
+
+            <div class="rotating-review active">
+
+                <h2>
+                    What People Say
+                </h2>
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    “Absolutely loved this!
+                    Everything was easy to use,
+                    and the whole experience was
+                    better than I expected.”
+                </p>
+
+                <strong>
+                    — Alex M.
+                </strong>
+
+            </div>
+
+
+            <div class="rotating-review">
+
+                <h2>
+                    What People Say
+                </h2>
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    “Super impressed with the quality
+                    and how simple everything was.
+                    Fast, smooth, and exactly what
+                    I was looking for!”
+                </p>
+
+                <strong>
+                    — Jordan R.
+                </strong>
+
+            </div>
+
+
+            <div class="rotating-review">
+
+                <h2>
+                    What People Say
+                </h2>
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    “10/10 experience!
+                    The design is great, everything
+                    works perfectly, and I would
+                    happily recommend it to a friend.”
+                </p>
+
+                <strong>
+                    — Taylor R.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <a
+            href="#contact"
+            class="quote-button"
+            onclick="showContact()"
+        >
+            Get a Quote Today →
+        </a>
+
+    </section>
+
+
+    <!-- =========================
+         WHY CHOOSE TYLER
+    ========================= -->
+
+    <section
+        class="services scroll-animate"
+        id="services"
+    >
+
+        <h2>
+            Why Choose Tyler?
+        </h2>
+
+        <p class="services-intro">
+
+            Tyler isn't trying to be the biggest
+            lawn company in town. He just wants to
+            do good work, treat people right, and
+            leave every yard looking better than
+            when he arrived.
+
+        </p>
+
+
+        <div class="cards">
+
+            <div class="card scroll-animate">
+
+                <div class="icon">
+                    🏆
+                </div>
+
+                <h3>
+                    10 Years Experience
+                </h3>
+
+                <p>
+
+                    Tyler has been taking care of
+                    lawns for 10 years and has learned
+                    that the little details make
+                    a big difference.
+
+                </p>
+
+            </div>
+
+
+            <div class="card scroll-animate">
+
+                <div class="icon">
+                    💵
+                </div>
+
+                <h3>
+                    $0.50 Per Square Foot
+                </h3>
+
+                <p>
+
+                    Simple, straightforward pricing.
+                    No confusing packages or surprise
+                    fees. Just $0.50 per square foot.
+
+                </p>
+
+            </div>
+
+
+            <div class="card scroll-animate">
+
+                <div class="icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Quick Service
+                </h3>
+
+                <p>
+
+                    Tyler knows people are busy.
+                    That's why he works quickly while
+                    still making sure the job is done
+                    right.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         TYLER'S STORY
+    ========================= -->
+
+    <section
+        class="story"
+        id="story"
+    >
+
+        <div class="story-box scroll-animate">
+
+            <h2>
+                A Little About <span>Tyler</span>
+            </h2>
+
+
+            <p>
+
+                Tyler's love for lawn care started
+                long before he ever thought about
+                turning it into a business.
+
+            </p>
+
+
+            <p>
+
+                When Tyler was a kid, he would walk
+                around the neighborhood looking for
+                lawns that needed mowing. He wasn't
+                trying to build a company back then.
+                He just wanted to make a little money.
+
+            </p>
+
+
+            <p>
+
+                Tyler remembers asking neighbors if
+                he could cut their grass for a dollar.
+                After finishing the job, he'd head
+                straight to the store with his money
+                to buy himself some gum.
+
+            </p>
+
+
+            <div class="story-highlight">
+
+                “It started with a dollar, a lawn mower,
+                and a kid who really wanted some gum.”
+
+            </div>
+
+
+            <p>
+
+                Years later, that same work ethic is
+                still what Tyler brings to every lawn.
+                What started as a kid trying to earn
+                a dollar turned into a passion for
+                making yards look their best.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+
+            Tyler's Lawn Care •
+            Quality Lawn Care You Can Count On
+
+        </p>
+
+    </footer>
+
+</div>
+
+
+<!-- =========================
+     GET A QUOTE PAGE
+========================= -->
+
+<div id="contact">
+
+    <div class="contact-box">
+
+        <h2>
+            Get a <span>Quote</span>
+        </h2>
+
+        <p>
+
+            Ready to get your lawn looking its best?
+            Reach out to Tyler today!
+
+        </p>
+
+
+        <div class="contact-item">
+
+            <h3>
+                📞 Call Tyler
+            </h3>
+
+            <p>
+                (555) 014-7283
+            </p>
+
+        </div>
+
+
+        <div class="contact-item">
+
+            <h3>
+                📧 Email Tyler
+            </h3>
+
+            <p>
+                tylerslawncare@example.com
+            </p>
+
+        </div>
+
+
+        <button
+            class="button"
+            onclick="showHome()"
+        >
+
+            ← Back to Home
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     SCROLL ARROW
+========================= -->
+
+<div
+    class="scroll-arrow"
+    onclick="scrollDown()"
+>
+
+    ↓
+
+</div>
+
+
+<script>
+
+/* =========================
+   GET A QUOTE
+========================= */
+
+function showContact() {
+
+    document.getElementById("home").style.display = "none";
+
+    document.getElementById("contact").style.display = "flex";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+function showHome() {
+
+    document.getElementById("contact").style.display = "none";
+
+    document.getElementById("home").style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================
+   SMOOTH SCROLL ARROW
+========================= */
+
+function scrollDown() {
+
+    const services =
+        document.getElementById("services");
+
+    window.scrollTo({
+
+        top: services.offsetTop - 60,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+/* =========================
+   REVIEW ROTATOR
+========================= */
+
+const reviews =
+    document.querySelectorAll(".rotating-review");
+
+let currentReview = 0;
+
+setInterval(() => {
+
+    reviews[currentReview].classList.remove("active");
+
+    currentReview++;
+
+    if (currentReview >= reviews.length) {
+
+        currentReview = 0;
+
+    }
+
+    reviews[currentReview].classList.add("active");
+
+}, 4000);
+
+
+/* =========================
+   SCROLL ANIMATIONS
+========================= */
+
+const animatedElements =
+    document.querySelectorAll(".scroll-animate");
+
+
+const observer = new IntersectionObserver(
+
+    (entries) => {
+
+        entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("show");
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold: 0.15
+    }
+
+);
+
+
+animatedElements.forEach((element) => {
+
+    observer.observe(element);
+
+});
+
+
+/* ==================================================
+   KILL SWITCH — CHANGE ONLY THIS
+================================================== */
+
+const SITE_ACTIVE = true;
+
+
+/* ==================================================
+   DO NOT CHANGE BELOW THIS LINE
+================================================== */
+
+if (!SITE_ACTIVE) {
+
+    document.body.innerHTML = `
+
+        <div style="
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            font-family:Arial;
+            background:#e9f5e7;
+            color:#17351d;
+            padding:30px;
+        ">
+
+            <div>
+
+                <h1>
+                    This person has not paid me
+                </h1>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+</script>
+
+
+</body>
+</html>
